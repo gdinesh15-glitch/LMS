@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary-50: #f0f3ff;
+  --color-primary-100: #e0e7ff;
+  --color-primary-200: #c7d2fe;
+  --color-primary-300: #a5b4fc;
+  --color-primary-400: #818cf8;
+  --color-primary-500: #6366f1;
+  --color-primary-600: #4f46e5;
+  --color-primary-700: #4338ca;
+  --color-primary-800: #3730a3;
+  --color-primary-900: #312e81;
+  --color-primary-950: #1e1b4b;
+
+  --font-sans: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  :root {
+    /* Default to a dark, high-contrast palette so dashboards (which are
+       designed for dark backgrounds) stay legible even before the user
+       picks a theme. Overridden by .theme-light / .theme-dark below. */
+    --bg-primary: #020617;
+    --bg-secondary: #0f172a;
+    --bg-card: #1e293b;
+    --border-color: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --accent-base: #6366f1;
+
+    /* Role Base Accents */
+    --accent-indigo: #6366f1;
+    --accent-emerald: #10b981;
+    --accent-violet: #8b5cf6;
+    --accent-amber: #f59e0b;
+  }
+
+  .theme-light {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-card: #ffffff;
+    --border-color: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+  }
+
+  .theme-dark {
+    --bg-primary: #020617;
+    --bg-secondary: #0f172a;
+    --bg-card: #1e293b;
+    --border-color: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+  }
+
+  .theme-midnight {
+    --bg-primary: #000000;
+    --bg-secondary: #0a0a0a;
+    --bg-card: #111111;
+    --border-color: #262626;
+    --text-primary: #ffffff;
+    --text-secondary: #a3a3a3;
+    --text-muted: #737373;
+    --accent-base: #6366f1;
+  }
+
+  .theme-forest {
+    --bg-primary: #022c22;
+    --bg-secondary: #064e3b;
+    --bg-card: #065f46;
+    --border-color: #0d94881a;
+    --text-primary: #f0fdf4;
+    --text-secondary: #a7f3d0;
+    --text-muted: #34d399;
+    --accent-base: #10b981;
+  }
+
+  /* Role Specific Overrides - Only change accents, preserve theme colors */
+  .theme-admin { --accent-base: #6366f1; }
+  .theme-librarian { --accent-base: #10b981; }
+  .theme-faculty { --accent-base: #8b5cf6; }
+  .theme-student { --accent-base: #f59e0b; }
+
+  html {
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-[var(--bg-primary)] text-[var(--text-primary)] font-sans;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-black tracking-tight text-[var(--text-primary)];
+  }
+}
+
+@layer components {
+  .pro-card {
+    @apply bg-[var(--bg-card)] border border-[var(--border-color)] rounded-[2rem] shadow-sm transition-all duration-300;
+  }
+
+  .pro-button {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 active:scale-95;
+  }
+  
+  .pro-input {
+    @apply w-full px-4 h-11 bg-[var(--bg-card)] border border-[var(--border-color)] rounded-xl outline-none transition-all focus:ring-2 focus:ring-[var(--accent-base)] focus:border-transparent text-sm leading-normal;
+  }
+}
+
+@layer base {
+  input[type="text"], input[type="email"], input[type="password"], input[type="search"], input[type="number"] {
+    line-height: normal !important;
+  }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }

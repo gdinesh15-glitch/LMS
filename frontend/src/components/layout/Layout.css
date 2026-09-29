@@ -1,0 +1,46 @@
+.lms-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #0f172a;
+  color: #e2e8f0;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+.lms-main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  transition: margin-left 0.3s ease;
+  min-height: 100vh;
+}
+
+.lms-main-content.with-sidebar {
+  margin-left: 260px; /* Sidebar width */
+}
+
+.lms-page-container {
+  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.lms-sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 999;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .lms-main-content.with-sidebar {
+    margin-left: 0;
+  }
+  .lms-sidebar-overlay {
+    display: block;
+  }
+}
